@@ -32,20 +32,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._class = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this._classSt = new System.Windows.Forms.TextBox();
+            this.countrySt = new System.Windows.Forms.TextBox();
+            this.numberSt = new System.Windows.Forms.TextBox();
+            this.ageSt = new System.Windows.Forms.TextBox();
+            this.nameSt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,6 +48,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.boy = new System.Windows.Forms.RadioButton();
+            this.girl = new System.Windows.Forms.RadioButton();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._class = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -84,76 +88,35 @@
             this.id,
             this.name,
             this.age,
+            this.gender,
             this.country,
             this._class,
             this.number});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             resources.ApplyResources(this.dataGridView1, "dataGridView1");
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.id.Frozen = true;
-            resources.ApplyResources(this.id, "id");
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.name.Frozen = true;
-            resources.ApplyResources(this.name, "name");
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // age
-            // 
-            this.age.Frozen = true;
-            resources.ApplyResources(this.age, "age");
-            this.age.Name = "age";
-            this.age.ReadOnly = true;
-            // 
-            // country
-            // 
-            this.country.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.country.Frozen = true;
-            resources.ApplyResources(this.country, "country");
-            this.country.Name = "country";
-            this.country.ReadOnly = true;
-            // 
-            // _class
-            // 
-            this._class.Frozen = true;
-            resources.ApplyResources(this._class, "_class");
-            this._class.Name = "_class";
-            this._class.ReadOnly = true;
-            // 
-            // number
-            // 
-            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.number.Frozen = true;
-            resources.ApplyResources(this.number, "number");
-            this.number.Name = "number";
-            this.number.ReadOnly = true;
-            // 
             // panel2
             // 
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.girl);
+            this.panel2.Controls.Add(this.boy);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this._classSt);
+            this.panel2.Controls.Add(this.countrySt);
+            this.panel2.Controls.Add(this.numberSt);
+            this.panel2.Controls.Add(this.ageSt);
+            this.panel2.Controls.Add(this.nameSt);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
@@ -177,30 +140,30 @@
             this.button4.Name = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // _classSt
             // 
-            resources.ApplyResources(this.textBox5, "textBox5");
-            this.textBox5.Name = "textBox5";
+            resources.ApplyResources(this._classSt, "_classSt");
+            this._classSt.Name = "_classSt";
             // 
-            // textBox4
+            // countrySt
             // 
-            resources.ApplyResources(this.textBox4, "textBox4");
-            this.textBox4.Name = "textBox4";
+            resources.ApplyResources(this.countrySt, "countrySt");
+            this.countrySt.Name = "countrySt";
             // 
-            // textBox3
+            // numberSt
             // 
-            resources.ApplyResources(this.textBox3, "textBox3");
-            this.textBox3.Name = "textBox3";
+            resources.ApplyResources(this.numberSt, "numberSt");
+            this.numberSt.Name = "numberSt";
             // 
-            // textBox2
+            // ageSt
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
+            resources.ApplyResources(this.ageSt, "ageSt");
+            this.ageSt.Name = "ageSt";
             // 
-            // textBox1
+            // nameSt
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            resources.ApplyResources(this.nameSt, "nameSt");
+            this.nameSt.Name = "nameSt";
             // 
             // label4
             // 
@@ -248,12 +211,87 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // boy
+            // 
+            resources.ApplyResources(this.boy, "boy");
+            this.boy.Name = "boy";
+            this.boy.TabStop = true;
+            this.boy.UseVisualStyleBackColor = true;
+            // 
+            // girl
+            // 
+            resources.ApplyResources(this.girl, "girl");
+            this.girl.Name = "girl";
+            this.girl.TabStop = true;
+            this.girl.UseVisualStyleBackColor = true;
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.id.Frozen = true;
+            resources.ApplyResources(this.id, "id");
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.name.Frozen = true;
+            resources.ApplyResources(this.name, "name");
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // age
+            // 
+            this.age.Frozen = true;
+            resources.ApplyResources(this.age, "age");
+            this.age.Name = "age";
+            this.age.ReadOnly = true;
+            // 
+            // gender
+            // 
+            this.gender.Frozen = true;
+            resources.ApplyResources(this.gender, "gender");
+            this.gender.Name = "gender";
+            this.gender.ReadOnly = true;
+            // 
+            // country
+            // 
+            this.country.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.country.Frozen = true;
+            resources.ApplyResources(this.country, "country");
+            this.country.Name = "country";
+            this.country.ReadOnly = true;
+            // 
+            // _class
+            // 
+            this._class.Frozen = true;
+            resources.ApplyResources(this._class, "_class");
+            this._class.Name = "_class";
+            this._class.ReadOnly = true;
+            // 
+            // number
+            // 
+            this.number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.number.Frozen = true;
+            resources.ApplyResources(this.number, "number");
+            this.number.Name = "number";
+            this.number.ReadOnly = true;
+            this.number.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -276,11 +314,11 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox _classSt;
+        private System.Windows.Forms.TextBox countrySt;
+        private System.Windows.Forms.TextBox numberSt;
+        private System.Windows.Forms.TextBox ageSt;
+        private System.Windows.Forms.TextBox nameSt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -289,9 +327,13 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton girl;
+        private System.Windows.Forms.RadioButton boy;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn age;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn country;
         private System.Windows.Forms.DataGridViewTextBoxColumn _class;
         private System.Windows.Forms.DataGridViewTextBoxColumn number;

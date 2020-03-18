@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Danh sach sinh vien-->
+<students>
+  <student>
+    <id>17T1021005</id>
+    <name>Nguyễn Hoàng Anh</name>
+    <age>23</age>
+    <gender>true</gender>
+    <country>Hà Tĩnh</country>
+    <number>0775120780</number>
+    <_class>K41E</_class>
+  </student>
+  <student>
+    <id>17T1021005</id>
+    <name>Võ Trần Nhật Bình</name>
+    <age>23</age>
+    <gender>true</gender>
+    <country>Hà Tĩnh</country>
+    <number>0775120780</number>
+    <_class>K41E</_class>
+  </student>
+  <student>
+    <id>17T1021005</id>
+    <name>Nguyễn Văn Diễn</name>
+    <age>23</age>
+    <gender>true</gender>
+    <country>Hà Tĩnh</country>
+    <number>0775120780</number>
+    <_class>K41E</_class>
+  </student>
+</students>

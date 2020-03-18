@@ -8,27 +8,12 @@ namespace WindowsFormsApp1.Model
 {
     class Student
     {
-        public string name, country, _class, number, id;
-        public int age;
-
-        public Student()
-        {
-        }
-
-        public Student(string name, string country, string @class, string number, string id, int age)
-        {
-            this.name = name;
-            this.country = country;
-            this._class = @class;
-            this.number = number;
-            this.id = id;
-            this.age = age;
-        }
-
-        public Student ParseStudent(string str)
-        {
-            Student sv = new Student();
-            return sv;
-        }
+        public string name { get; set; }
+        public string country { get; set; }
+        public string _class { get; set; }
+        public string number { get; set; }
+        public string id { get; set; }
+        public bool gender { get; set; }
+        public int age { get; set; }
     }
 }
