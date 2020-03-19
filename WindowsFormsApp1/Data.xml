@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--Danh sach sinh vien-->
 <students>
   <student>
@@ -11,7 +11,7 @@
     <_class>K41E</_class>
   </student>
   <student>
-    <id>17T1021005</id>
+    <id>17T1021006</id>
     <name>Võ Trần Nhật Bình</name>
     <age>23</age>
     <gender>true</gender>
@@ -20,12 +20,30 @@
     <_class>K41E</_class>
   </student>
   <student>
-    <id>17T1021005</id>
+    <id>17T1021007</id>
     <name>Nguyễn Văn Diễn</name>
     <age>23</age>
     <gender>true</gender>
     <country>Hà Tĩnh</country>
     <number>0775120780</number>
+    <_class>K41E</_class>
+  </student>
+  <student>
+    <id>17T1021008</id>
+    <name>Hoàng Mai Quỳnh Anh</name>
+    <age>20</age>
+    <gender>false</gender>
+    <country>Huế</country>
+    <number>0775120780</number>
+    <_class>K41E</_class>
+  </student>
+  <student>
+    <id>done!</id>
+    <name>Nguyễn Minh Tâm</name>
+    <age>21</age>
+    <gender>true</gender>
+    <country>Huế</country>
+    <number>0707676785</number>
     <_class>K41E</_class>
   </student>
 </students>
