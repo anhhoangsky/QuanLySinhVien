@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{7E5932E1-2CE7-4598-86E9-6E316D2F0630}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLySinhVien", "WindowsFormsApp1\QuanLySinhVien.csproj", "{7E5932E1-2CE7-4598-86E9-6E316D2F0630}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
