@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -51,6 +53,38 @@ namespace WindowsFormsApp1.Model
             }
 
             return list;
+        }
+
+        public static List<Student> loadSql()
+        {
+            List<Student> lStudent = new List<Student>();
+            string connetionString = null;
+            connetionString = "Data Source=.;Initial Catalog=QLSVWinForm;User ID=sa;Password=123";
+            using (SqlConnection cnn = new SqlConnection(connetionString))
+            {
+                string oString = "Select * from SinhVien";
+                SqlCommand oCmd = new SqlCommand(oString, cnn);
+                //oCmd.Parameters.AddWithValue("@Fname", fName);
+                cnn.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        Student st = new Student();
+                        st.age = int.Parse(oReader["age"].ToString());
+                        st.country = oReader["country"].ToString();
+                        st.gender = bool.Parse(oReader["gender"].ToString());
+                        st.id = oReader["id"].ToString();
+                        st.name = oReader["name"].ToString();
+                        st._class = oReader["_class"].ToString();
+                        st.number = oReader["number"].ToString();
+                        lStudent.Add(st);
+                    }
+
+                    cnn.Close();
+                }
+            }
+            return lStudent;
         }
     }
 }

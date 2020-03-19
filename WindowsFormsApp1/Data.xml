@@ -5,45 +5,45 @@
     <id>17T1021005</id>
     <name>Nguyễn Hoàng Anh</name>
     <age>23</age>
-    <gender>true</gender>
+    <gender>True</gender>
     <country>Hà Tĩnh</country>
     <number>0775120780</number>
     <_class>K41E</_class>
   </student>
   <student>
     <id>17T1021006</id>
-    <name>Võ Trần Nhật Bình</name>
-    <age>23</age>
-    <gender>true</gender>
-    <country>Hà Tĩnh</country>
-    <number>0775120780</number>
-    <_class>K41E</_class>
-  </student>
-  <student>
-    <id>17T1021007</id>
-    <name>Nguyễn Văn Diễn</name>
-    <age>23</age>
-    <gender>true</gender>
-    <country>Hà Tĩnh</country>
-    <number>0775120780</number>
-    <_class>K41E</_class>
-  </student>
-  <student>
-    <id>17T1021008</id>
     <name>Hoàng Mai Quỳnh Anh</name>
     <age>20</age>
     <gender>false</gender>
     <country>Huế</country>
-    <number>0775120780</number>
-    <_class>K41E</_class>
+    <number>chưa biết</number>
+    <_class>Anh</_class>
   </student>
   <student>
-    <id>done!</id>
-    <name>Nguyễn Minh Tâm</name>
+    <id>17T1021007</id>
+    <name>Nguyễn Thị Phước</name>
+    <age>21</age>
+    <gender>False</gender>
+    <country>Đà Nẵng</country>
+    <number>chưa biết</number>
+    <_class>Anh</_class>
+  </student>
+  <student>
+    <id>17T1021008</id>
+    <name>Trần Thị Ngọc Năm</name>
+    <age>21</age>
+    <gender>false</gender>
+    <country>Quảng Trị</country>
+    <number>0344262288</number>
+    <_class>HTTT</_class>
+  </student>
+  <student>
+    <id>17T1021009</id>
+    <name>Võ Trần Nhật Bình</name>
     <age>21</age>
     <gender>true</gender>
     <country>Huế</country>
-    <number>0707676785</number>
+    <number>chưa biết</number>
     <_class>K41E</_class>
   </student>
 </students>

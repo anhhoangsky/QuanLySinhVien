@@ -31,16 +31,39 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Student st = new Student();
-            st.name = nameSt.Text;
-            st.country = countrySt.Text;
-            st.age = int.Parse(ageSt.Text);
-            st._class = _classSt.Text;
-            st.number = numberSt.Text;
-            st.gender = boy.Checked ? true : false;
-            st.id = new Random().NextDouble().ToString();
-            ExportData.Add(st);
-            render();
+            try
+            {
+                Student st = new Student();
+                st.name = nameSt.Text == "" ? throw new Exception("tên") : nameSt.Text;
+                st.country = countrySt.Text == "" ? throw new Exception("quê quán") : countrySt.Text;
+                try
+                {
+                    st.age = int.Parse(ageSt.Text);
+                }
+                catch
+                {
+                    throw new Exception("tuổi là một số");
+                }
+                st._class = _classSt.Text;
+                st.number = numberSt.Text;
+                st.gender = boy.Checked ? true : false;
+                st.id = String.Format("17T102{0:0000}", ExportData.countOfStudent()+1);
+                try
+                {
+                    ExportData.SAdd(st);
+                    ExportData.XAdd(st);
+                }
+                catch(Exception)
+                {
+                    throw new Exception("Thêm không thành công");
+                }
+                render();
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show("Lỗi: " + er.Message);
+            }
+
         }
 
 
@@ -61,49 +84,23 @@ namespace WindowsFormsApp1
 
         private void render()
         {
-            dataGridView1.Rows.Clear();
-            dataGridView1.Refresh();
-            dataGridView1.DefaultCellStyle.ForeColor = Color.CadetBlue;
-            List<Student> list = ImportData.LoadXml();
-            int i = 0;
-            foreach (Student st in list)
-            {
-                DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[i].Clone();
-                row.Cells[0].Value = st.id;
-                row.Cells[1].Value = st.name;
-                row.Cells[2].Value = st.age;
-                row.Cells[3].Value = st.gender ? "Nam" : "Nữ";
-                row.Cells[4].Value = st.country;
-                row.Cells[5].Value = st._class;
-                row.Cells[6].Value = st.number;
-                dataGridView1.Rows.Add(row);
-                i++;
-            }
-            //var bindingList = new BindingList<Student>(ImportData.LoadXml());
-            //var source = new BindingSource(bindingList, null);
-            //dataGridView1.DataSource = source;
+            var bindingList = new BindingList<Student>(ImportData.LoadXml());
+            var source = new BindingSource(bindingList, null);
+            dataGridView1.DataSource = source;
             //dataGridView1.AutoGenerateColumns = true;
-        }
-
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            
-
-
-            //MessageBox.Show(dataGridView1[0, e.RowIndex].Value.ToString());
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                idSt.Text = dataGridView1[0, e.RowIndex].Value.ToString();
-                nameSt.Text = dataGridView1[1, e.RowIndex].Value.ToString();
-                ageSt.Text = dataGridView1[2, e.RowIndex].Value.ToString();
-                countrySt.Text = dataGridView1[4, e.RowIndex].Value.ToString();
-                _classSt.Text = dataGridView1[5, e.RowIndex].Value.ToString();
-                numberSt.Text = dataGridView1[6, e.RowIndex].Value.ToString();
-                if (dataGridView1[3, e.RowIndex].Value.ToString().Equals("Nam"))
+                idSt.Text = dataGridView1[dataGridView1.Columns["id"].Index, e.RowIndex].Value.ToString();
+                nameSt.Text = dataGridView1[dataGridView1.Columns["name"].Index, e.RowIndex].Value.ToString();
+                ageSt.Text = dataGridView1[dataGridView1.Columns["age"].Index, e.RowIndex].Value.ToString();
+                countrySt.Text = dataGridView1[dataGridView1.Columns["country"].Index, e.RowIndex].Value.ToString();
+                _classSt.Text = dataGridView1[dataGridView1.Columns["_class"].Index, e.RowIndex].Value.ToString();
+                numberSt.Text = dataGridView1[dataGridView1.Columns["number"].Index, e.RowIndex].Value.ToString();
+                if (bool.Parse(dataGridView1[dataGridView1.Columns["gender"].Index, e.RowIndex].Value.ToString()))
                 {
                     boy.Checked = true;
                 }
@@ -127,18 +124,64 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Student st = new Student();
-            st.id = idSt.Text;
-            st.name = nameSt.Text;
-            st.number = numberSt.Text;
-            st._class = _classSt.Text;
-            st.gender = boy.Checked ? true : false;
-            st.country = countrySt.Text;
-            st.age = int.Parse(ageSt.Text);
-            ExportData.Edit(st);
+            try
+            {
+                Student st = new Student();
+                st.id = idSt.Text;
+                st.name = nameSt.Text;
+                st.number = numberSt.Text;
+                st._class = _classSt.Text;
+                st.gender = boy.Checked ? true : false;
+                st.country = countrySt.Text;
+                st.age = int.Parse(ageSt.Text);
+                ExportData.XEdit(st);
+                _ = ExportData.SEdit(st);
+                render();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Chọn sinh viên cần sửa!");
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string id = idSt.Text;
+            try
+            {
+                _ = id == "" ? throw new Exception("chọn sinh viên cần xoá") : idSt.Text;
+                if (!ExportData.SDelete(id))
+                {
+                    throw new Exception("Database không có sinh viên này!");
+                }
+                try
+                {
+                    ExportData.XDelete(id);
+                }
+                catch (Exception)
+                {
+                    throw new Exception("file Xml");
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Lỗi: " + err.Message);
+            }
+
             render();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var bindingList = new BindingList<Student>(ImportData.loadSql());
+            var source = new BindingSource(bindingList, null);
+            dataGridView1.DataSource = source;
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            render();
+        }
     }
 }
