@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.countrySt = new System.Windows.Forms.TextBox();
             this.idSt = new System.Windows.Forms.TextBox();
             this.girl = new System.Windows.Forms.RadioButton();
             this.boy = new System.Windows.Forms.RadioButton();
@@ -46,9 +47,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Tuổi = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.editBtn = new System.Windows.Forms.Button();
+            this.addBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +58,6 @@
             this.country = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._class = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countrySt = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -91,10 +91,15 @@
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.Tuổi);
             this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.button3);
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.deleteBtn);
+            this.panel4.Controls.Add(this.editBtn);
+            this.panel4.Controls.Add(this.addBtn);
             this.panel4.Name = "panel4";
+            // 
+            // countrySt
+            // 
+            resources.ApplyResources(this.countrySt, "countrySt");
+            this.countrySt.Name = "countrySt";
             // 
             // idSt
             // 
@@ -126,14 +131,14 @@
             resources.ApplyResources(this.button5, "button5");
             this.button5.Name = "button5";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.SLoadBtn_Click);
             // 
             // button4
             // 
             resources.ApplyResources(this.button4, "button4");
             this.button4.Name = "button4";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.XLoadBtn_Click);
             // 
             // _classSt
             // 
@@ -180,26 +185,26 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // button3
+            // deleteBtn
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.deleteBtn, "deleteBtn");
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
-            // button2
+            // editBtn
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            resources.ApplyResources(this.editBtn, "editBtn");
+            this.editBtn.Name = "editBtn";
+            this.editBtn.UseVisualStyleBackColor = true;
+            this.editBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
-            // button1
+            // addBtn
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.addBtn, "addBtn");
+            this.addBtn.Name = "addBtn";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // dataGridView1
             // 
@@ -233,7 +238,7 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentGridView_CellClick);
             // 
             // id
             // 
@@ -296,11 +301,6 @@
             this.number.ReadOnly = true;
             this.number.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // countrySt
-            // 
-            resources.ApplyResources(this.countrySt, "countrySt");
-            this.countrySt.Name = "countrySt";
-            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -308,9 +308,9 @@
             this.BackColor = System.Drawing.Color.Lavender;
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -347,9 +347,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Tuổi;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button editBtn;
+        private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.TextBox countrySt;
     }
 }

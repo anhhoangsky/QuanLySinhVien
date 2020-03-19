@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Model;
+using WindowsFormsApp1.ViewModel;
 
 namespace WindowsFormsApp1
 {
@@ -17,80 +10,30 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             render();
-
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void AddBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                Student st = new Student();
-                st.name = nameSt.Text == "" ? throw new Exception("tên") : nameSt.Text;
-                st.country = countrySt.Text == "" ? throw new Exception("quê quán") : countrySt.Text;
-                try
-                {
-                    st.age = int.Parse(ageSt.Text);
-                }
-                catch
-                {
-                    throw new Exception("tuổi là một số");
-                }
-                st._class = _classSt.Text;
-                st.number = numberSt.Text;
-                st.gender = boy.Checked ? true : false;
-                st.id = String.Format("17T102{0:0000}", ExportData.countOfStudent()+1);
-                try
-                {
-                    ExportData.SAdd(st);
-                    ExportData.XAdd(st);
-                }
-                catch(Exception)
-                {
-                    throw new Exception("Thêm không thành công");
-                }
-                render();
+                string obj = String.Format("{0}|{1}|{2}|{3}|{4}|{5}", nameSt.Text, numberSt.Text
+                                                    , _classSt.Text, boy.Checked, countrySt.Text, ageSt.Text);
+                StudentVM.AddVM(obj);
             }
             catch (Exception er)
             {
                 MessageBox.Show("Lỗi: " + er.Message);
             }
-
-        }
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
+            render();
         }
 
         private void render()
         {
-            var bindingList = new BindingList<Student>(ImportData.LoadXml());
-            var source = new BindingSource(bindingList, null);
-            dataGridView1.DataSource = source;
+            dataGridView1.DataSource = StudentVM.XGridView();
             //dataGridView1.AutoGenerateColumns = true;
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void StudentGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -118,68 +61,45 @@ namespace WindowsFormsApp1
                 numberSt.Text = "";
                 girl.Checked = false;
                 boy.Checked = false;
-                //MessageBox.Show("Có gì đó sai sai ?");
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void EditBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                Student st = new Student();
-                st.id = idSt.Text;
-                st.name = nameSt.Text;
-                st.number = numberSt.Text;
-                st._class = _classSt.Text;
-                st.gender = boy.Checked ? true : false;
-                st.country = countrySt.Text;
-                st.age = int.Parse(ageSt.Text);
-                ExportData.XEdit(st);
-                _ = ExportData.SEdit(st);
-                render();
+                string obj = String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", idSt.Text, nameSt.Text, numberSt.Text
+                                                       , _classSt.Text, boy.Checked, countrySt.Text, ageSt.Text);
+                StudentVM.EditVM(obj);
             }
             catch (Exception)
             {
                 MessageBox.Show("Chọn sinh viên cần sửa!");
             }
-
+            render();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void DeleteBtn_Click(object sender, EventArgs e)
         {
             string id = idSt.Text;
             try
             {
-                _ = id == "" ? throw new Exception("chọn sinh viên cần xoá") : idSt.Text;
-                if (!ExportData.SDelete(id))
-                {
-                    throw new Exception("Database không có sinh viên này!");
-                }
-                try
-                {
-                    ExportData.XDelete(id);
-                }
-                catch (Exception)
-                {
-                    throw new Exception("file Xml");
-                }
+                StudentVM.DeleteVM(id);
             }
             catch (Exception err)
             {
                 MessageBox.Show("Lỗi: " + err.Message);
             }
-
             render();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void SLoadBtn_Click(object sender, EventArgs e)
         {
-            var bindingList = new BindingList<Student>(ImportData.loadSql());
-            var source = new BindingSource(bindingList, null);
-            dataGridView1.DataSource = source;
+
+            dataGridView1.DataSource = StudentVM.SGridView();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void XLoadBtn_Click(object sender, EventArgs e)
         {
             render();
         }

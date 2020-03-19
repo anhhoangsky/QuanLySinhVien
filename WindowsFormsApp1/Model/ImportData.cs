@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
 using System.Xml.XPath;
-using WindowsFormsApp1.Model;
 
 namespace WindowsFormsApp1.Model
 {
     class ImportData
-    {
+    {   
+        /// <summary>
+    /// Get list student from Xml
+    /// </summary>
+    /// <returns></returns>
         public static List<Student> LoadXml()
         {
             List<Student> list = new List<Student>();
@@ -54,7 +50,10 @@ namespace WindowsFormsApp1.Model
 
             return list;
         }
-
+        /// <summary>
+        /// Get list student from Sql server
+        /// </summary>
+        /// <returns></returns>
         public static List<Student> loadSql()
         {
             List<Student> lStudent = new List<Student>();

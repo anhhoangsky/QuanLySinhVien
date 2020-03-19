@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -12,6 +8,10 @@ namespace WindowsFormsApp1.Model
 {
     class ExportData
     {
+        /// <summary>
+        /// Add Student to Xml document
+        /// </summary>
+        /// <param name="st"></param>
         public static void XAdd(Student st)
         {
         string path = @"C:\Users\Anh Sky\source\repos\WindowsFormsApp1\WindowsFormsApp1\Data.xml";
@@ -30,7 +30,10 @@ namespace WindowsFormsApp1.Model
                );
             xmlDoc.Save(path);
         }
-
+        /// <summary>
+        /// Edit student for Xml document
+        /// </summary>
+        /// <param name="st"></param>
         public static void XEdit(Student st)
         {
         string path = @"C:\Users\Anh Sky\source\repos\WindowsFormsApp1\WindowsFormsApp1\Data.xml";
@@ -47,7 +50,10 @@ namespace WindowsFormsApp1.Model
             student.SelectSingleNode("gender").SetValue(st.gender.ToString());
             editDoc.Save(path);
         }
-
+        /// <summary>
+        /// Delete student for Xml document
+        /// </summary>
+        /// <param name="id">id of student</param>
         public static void XDelete(string id)
         {
             string path = @"C:\Users\Anh Sky\source\repos\WindowsFormsApp1\WindowsFormsApp1\Data.xml";
@@ -59,7 +65,11 @@ namespace WindowsFormsApp1.Model
             student.DeleteSelf();
             editDoc.Save(path);
         }
-
+        /// <summary>
+        /// Delete student for Sql server
+        /// </summary>
+        /// <param name="id">id of student</param>
+        /// <returns></returns>
         public static bool SDelete(string id)
         {
             int rowEft;
@@ -76,8 +86,11 @@ namespace WindowsFormsApp1.Model
             }
             return !(rowEft == 0);
         }
-
-        public static long countOfStudent()
+        /// <summary>
+        /// Method used to generate id student
+        /// </summary>
+        /// <returns></returns>
+        public static long idLast()
         {
             long count = 1;
             string path = @"C:\Users\Anh Sky\source\repos\WindowsFormsApp1\WindowsFormsApp1\Data.xml";
@@ -89,7 +102,11 @@ namespace WindowsFormsApp1.Model
             count = int.Parse(last);
             return count;
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="st"></param>
+        /// <returns></returns>
         public static bool SAdd(Student st)
         {
             int rowEft;
@@ -119,6 +136,11 @@ namespace WindowsFormsApp1.Model
             }
             return !(rowEft == 0);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="st"></param>
+        /// <returns></returns>
         public static bool SEdit(Student st)
         {
             int rowEft;
